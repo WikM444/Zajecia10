@@ -27,12 +27,12 @@ class Manager:
     def __init__(self, parameters: Parameters):
         self.parameters = parameters
 
-        self.apartments = {}
-        self.tenants = {}
-        self.transfers = []
-        self.bills = []
-        self.tenants_blacklist = []
-        self.apartment_events = []
+        self.apartments = {}; """key: apartment_key, value: Apartment"""
+        self.tenants = {}; """key: tenant_key, value: Tenant"""
+        self.transfers = []; """list of Transfer objects"""
+        self.bills = []; """list of Bill objects"""
+        self.tenants_blacklist = []; """list of blacklisted objects"""
+        self.apartment_events = []; """list of ApartmentEvent objects"""
 
         self.load_data()
 
