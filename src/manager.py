@@ -22,6 +22,7 @@ class Manager:
     """
     Manager class responsible for loading data and providing methods
     to manage apartments, tenants, transfers, bills, and apartment events.
+
     -Example:
     manager = Manager()
     manager.calculate_annual_balance(year=2023)
@@ -59,6 +60,7 @@ class Manager:
         self, apartment_key: str, only_unsolved: bool = True
     ) -> List[ApartmentEvent]:
         """Generate a report of apartment events for a given apartment key.
+
         -Example:
         manager.generate_apartment_events_report("apart-Polanka", True)
         """
@@ -80,6 +82,7 @@ class Manager:
 
     def get_apartment(self, apartment_key: str) -> Apartment | None:
         """Get an apartment by its key.
+
         -Example:
         manager.get_apartment("apart-polanka")
         """
@@ -152,7 +155,11 @@ class Manager:
         ]
 
     def get_debtors(self, apartment_key: str, year: int, month: int) -> List[str]:
-        """Get a list of tenant names (debtors) for a given apartment key, year, and month."""
+        """Get a list of tenant names (debtors) for a given apartment key, year, and month.
+        
+        -Example:
+        manager.get_deptors("apart-polanka", 2023, 6)
+        """
         if month < 1 or month > 12:
             raise ValueError("Month must be between 1 and 12")
         output = []
@@ -178,7 +185,11 @@ class Manager:
         return output
 
     def calculate_tax(self, year: int, month: int, tax_rate: float) -> float:
-        """Calculate the tax amount based on the total income from transfers."""
+        """Calculate the tax amount based on the total income from transfers.
+        
+        -Example:
+        manager.calculate_tax(2023, 6, 0.5)
+        """
         total_income = sum(
             transfer.amount_pln
             for transfer in self.transfers
