@@ -22,6 +22,9 @@ class Manager:
     """
     Manager class responsible for loading data and providing methods
     to manage apartments, tenants, transfers, bills, and apartment events.
+    -Example:
+    manager = Manager()
+    manager.calculate_annual_balance(year=2023)
     """
 
     def __init__(self, parameters: Parameters):
@@ -55,7 +58,10 @@ class Manager:
     def generate_apartment_events_report(
         self, apartment_key: str, only_unsolved: bool = True
     ) -> List[ApartmentEvent]:
-        """Generate a report of apartment events for a given apartment key."""
+        """Generate a report of apartment events for a given apartment key.
+        -Example:
+        manager.generate_apartment_events_report("apart-Polanka", True)
+        """
         if apartment_key not in self.apartments:
             raise ValueError("Apartment key does not exist")
         return [
@@ -73,7 +79,10 @@ class Manager:
         return True
 
     def get_apartment(self, apartment_key: str) -> Apartment | None:
-        """Get an apartment by its key."""
+        """Get an apartment by its key.
+        -Example:
+        manager.get_apartment("apart-polanka")
+        """
         return self.apartments.get(apartment_key, None)
 
     def get_apartment_costs(
